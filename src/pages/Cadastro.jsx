@@ -47,7 +47,9 @@ export default function Cadastro() {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              <button className="dropdown-toggle">Especialidades ▾</button>
+              
+              <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+              
               {showDropdown && (
                 <div className="dropdown-menu">
                   <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>

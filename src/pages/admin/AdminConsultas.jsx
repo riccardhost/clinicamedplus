@@ -25,49 +25,53 @@ export default function AdminConsultas() {
       
       <header className="header_geral">
           
-          <div className="navbar">
+        <div className="navbar">
 
-          <div className="logo-container">
-            <Link to="/">
-              <img src={logoImg} alt="Logo Clínica Online" className="logo" />
-            </Link>
+        <div className="logo-container">
+          <Link to="/">
+            <img src={logoImg} alt="Logo Clínica Online" className="logo" />
+          </Link>
+        </div>
+
+        <button className="menu-toggle" onClick={toggleMenu} aria-label="Abrir menu">
+          {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+        </button>
+
+        <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <Link to="/" onClick={closeMenu}>Início</Link>
+
+          <div
+            className="dropdown"
+            onMouseEnter={() => setShowDropdown(true)}
+            onMouseLeave={() => setShowDropdown(false)}
+          >
+            
+            <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+            
+            {showDropdown && (
+              <div className="dropdown-menu">
+                <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
+                <Link to="/especialidades/clinico-geral" onClick={closeMenu}>Clínico Geral</Link>
+                <Link to="/especialidades/pediatria" onClick={closeMenu}>Pediatria</Link>
+                <Link to="/especialidades/dermatologia" onClick={closeMenu}>Dermatologia</Link>
+                <Link to="/especialidades/ginecologia" onClick={closeMenu}>Ginecologia</Link>
+              </div>
+            )}
           </div>
 
-          <button className="menu-toggle" onClick={toggleMenu} aria-label="Abrir menu">
-            {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </button>
-
-          <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
-            <Link to="/" onClick={closeMenu}>Início</Link>
-
-            <div
-              className="dropdown"
-              onMouseEnter={() => setShowDropdown(true)}
-              onMouseLeave={() => setShowDropdown(false)}
-            >
-              <button className="dropdown-toggle">Especialidades ▾</button>
-              {showDropdown && (
-                <div className="dropdown-menu">
-                  <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
-                  <Link to="/especialidades/clinico-geral" onClick={closeMenu}>Clínico Geral</Link>
-                  <Link to="/especialidades/pediatria" onClick={closeMenu}>Pediatria</Link>
-                  <Link to="/especialidades/dermatologia" onClick={closeMenu}>Dermatologia</Link>
-                  <Link to="/especialidades/ginecologia" onClick={closeMenu}>Ginecologia</Link>
-                </div>
-              )}
-            </div>
-
-            <Link to="/login" onClick={closeMenu}>Login</Link>
-            <Link to="/cadastro" className="btn-cadastro" onClick={closeMenu}>Cadastro</Link>
-          </nav>
-        </div>
-        </header>
+          <Link to="/login" onClick={closeMenu}>Login</Link>
+          <Link to="/cadastro" className="btn-cadastro" onClick={closeMenu}>Cadastro</Link>
+        </nav>
+      </div>
+      </header>
 
       {/* Página de Consultas */}
       <Container style={{ marginTop: '3em', marginBottom: '3em' }}>
         <Header as="h2" textAlign="center">
           Gerenciar Consultas
         </Header>
+
+        <br />
 
         <Segment padded>
           <Table celled>
@@ -91,8 +95,8 @@ export default function AdminConsultas() {
                 <Table.Cell>10:00</Table.Cell>
                 <Table.Cell>Confirmada</Table.Cell>
                 <Table.Cell>
-                  <Button color="blue">Ver Detalhes</Button>
-                  <Button color="red">Cancelar</Button>
+                  <Button color="blue">DETALHES</Button>
+                  <Button color="red">CANCELAR</Button>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>

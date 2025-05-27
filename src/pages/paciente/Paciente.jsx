@@ -3,7 +3,7 @@
 import '../../styles/Home.css';
 import '../../styles/Form.css';
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import {
   Form,
@@ -11,6 +11,8 @@ import {
   Header,
   Icon,
   Message,
+  Container,
+  Segment,
 } from 'semantic-ui-react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import logoImg from '../../assets/images/logo/ClinicaMED002.png';
@@ -18,7 +20,7 @@ import { FaFacebook, FaInstagram, FaPhoneAlt, FaEnvelope } from 'react-icons/fa'
 
 // import axios from 'axios'; // Descomente ao integrar com backend
 
-export default function EditarPerfil() {
+export default function Paciente() {
 
   const [form, setForm] = useState({
     nome: '',
@@ -86,7 +88,9 @@ export default function EditarPerfil() {
             onMouseEnter={() => setShowDropdown(true)}
             onMouseLeave={() => setShowDropdown(false)}
           >
-            <button className="dropdown-toggle">Especialidades ▾</button>
+
+            <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+            
             {showDropdown && (
               <div className="dropdown-menu">
                 <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
@@ -104,21 +108,20 @@ export default function EditarPerfil() {
       </div>
     </header>
 
-    <section className="form-section">
+    <Container style={{ marginTop: '3em', marginBottom: '3em'  }}>
 
-      <div className="form-card">
+      <Header as="h2" icon textAlign="center">
+        <Icon name="user edit" />
+          Editar Perfil
+        <Header.Subheader>
+            Atualize seus dados pessoais abaixo
+        </Header.Subheader>
 
-        <Header as="h2" icon textAlign="center">
+      </Header>
 
-          <Icon name="user edit" />
+      <br />
 
-            Editar Perfil
-
-          <Header.Subheader>
-              Atualize seus dados pessoais abaixo
-          </Header.Subheader>
-
-        </Header>
+      <Segment padded='very' style={{ maxWidth: '500px', margin: '0 auto' }}>
 
         <Form onSubmit={handleSubmit}>
 
@@ -129,6 +132,7 @@ export default function EditarPerfil() {
             onChange={handleChange}
             required
           />
+
           <Form.Input
             label="Email"
             name="email"
@@ -137,6 +141,7 @@ export default function EditarPerfil() {
             onChange={handleChange}
             required
           />
+
           <Form.Input
             label="Telefone"
             name="telefone"
@@ -144,6 +149,7 @@ export default function EditarPerfil() {
             onChange={handleChange}
             required
           />
+
           <Form.Input
             label="CPF"
             name="cpf"
@@ -151,6 +157,7 @@ export default function EditarPerfil() {
             onChange={handleChange}
             required
           />
+
           <Button primary fluid type="submit">SALVAR</Button>
 
         </Form>
@@ -163,10 +170,10 @@ export default function EditarPerfil() {
             style={{ marginTop: '1em' }}
           />
         )}
+        
+      </Segment>
 
-      </div>
-
-    </section>
+    </Container>
 
     <footer className="footer">
       <div className="footer-container">
@@ -202,3 +209,4 @@ export default function EditarPerfil() {
     </div>
   );
 }
+

@@ -1,0 +1,95 @@
+
+
+/* Especialidades.css */
+.especialidades {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #e9e9e9;
+  margin: 0 150px;
+}
+
+.especialidades h2 {
+  font-size: 2.5rem;
+  color: #0a3d62;
+  margin-bottom: 0.5rem;
+}
+
+.especialidades p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card h4 {
+  font-size: 1.4rem;
+  color: #0a3d62;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .especialidades {
+    padding: 3rem 1rem;
+    margin: 0 40px;
+  }
+
+  .especialidades h2 {
+    font-size: 2.1rem;
+  }
+
+  .especialidades p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cards {
+    gap: 1.5rem;
+  }
+
+  .card {
+    padding: 1.2rem;
+  }
+
+  .card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-bottom: 1rem;
+  }
+}

@@ -10,6 +10,7 @@ import logoImg from '../../assets/images/logo/ClinicaMED002.png';
 import { FaFacebook, FaInstagram, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
 export default function DashboardMedico() {
+
   const navigate = useNavigate();
 
   // Dados simulados – depois você pode puxar da API
@@ -19,11 +20,11 @@ export default function DashboardMedico() {
   };
 
   const handleVerConsultas = () => {
-    navigate('/consultas-medico');
+    navigate('/medico/consultas');
   };
 
   const handleEditarPerfil = () => {
-    navigate('/editar-perfil-medico');
+    navigate('/medico/perfil');
   };
 
   const handleLogout = () => {
@@ -66,7 +67,9 @@ export default function DashboardMedico() {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              <button className="dropdown-toggle">Especialidades ▾</button>
+              
+              <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+
               {showDropdown && (
                 <div className="dropdown-menu">
                   <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
@@ -86,8 +89,6 @@ export default function DashboardMedico() {
 
         <Container style={{ marginTop: '3em', marginBottom: '3em' }}>
 
-          <Segment padded raised color="blue">
-
           <Header as="h2" textAlign="center" style={{ marginBottom: '1em', padding: '1em'}}>
 
             <Icon name="stethoscope" />
@@ -98,32 +99,40 @@ export default function DashboardMedico() {
 
           <Divider />
 
+          <Segment padded raised color="red">
+
             <Grid columns={2} stackable textAlign="center">
+
               <Grid.Row>
-               <Grid.Column>
-                <p><strong>Nome:</strong> {medico.nome}</p>
-                <p><strong>Especialidade:</strong> {medico.especialidade}</p>
-              </Grid.Column>
+
                 <Grid.Column>
+                  <p><strong>Médico(a):</strong> {medico.nome}</p>
+                  <p><strong>Especialidade:</strong> {medico.especialidade}</p>
+                </Grid.Column>
+
+                <Grid.Column>
+
                   <Button icon labelPosition="left" color="blue" onClick={handleVerConsultas}>
                     <Icon name="calendar check" />
-                    Consultas Agendadas
+                    CONSULTAS AGENDADAS
                   </Button>
+
                   <Button icon labelPosition="left" color="teal" onClick={handleEditarPerfil} style={{ marginTop: '1em' }}>
                     <Icon name="edit" />
-                    Editar Perfil
+                    MEU PERFIL
                   </Button>
+
                   <Button icon labelPosition="left" color="red" onClick={handleLogout} style={{ marginTop: '1em' }}>
                     <Icon name="sign-out" />
-                    Sair
+                    SAIR
                   </Button>
+
                 </Grid.Column>
+
               </Grid.Row>
 
             </Grid>
-
-            <Divider />
-
+            
           </Segment>
 
         </Container>

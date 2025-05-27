@@ -45,7 +45,9 @@ export default function AdminUsuarios() {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              <button className="dropdown-toggle">Especialidades ▾</button>
+              
+              <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+              
               {showDropdown && (
                 <div className="dropdown-menu">
                   <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
@@ -60,14 +62,18 @@ export default function AdminUsuarios() {
             <Link to="/login" onClick={closeMenu}>Login</Link>
             <Link to="/cadastro" className="btn-cadastro" onClick={closeMenu}>Cadastro</Link>
           </nav>
+
         </div>
-        </header>
+
+      </header>
 
       {/* Página de Usuários */}
       <Container style={{ marginTop: '3em', marginBottom: '3em'  }}>
         <Header as="h2" textAlign="center">
           Gerenciar Usuários
         </Header>
+
+        <br />
 
         <Segment padded>
           <Table celled>
@@ -87,8 +93,8 @@ export default function AdminUsuarios() {
                 <Table.Cell>joao@example.com</Table.Cell>
                 <Table.Cell>(11) 99999-9999</Table.Cell>
                 <Table.Cell>
-                  <Button color="yellow">Editar</Button>
-                  <Button color="red">Excluir</Button>
+                  <Button color="yellow">EDITAR</Button>
+                  <Button color="red">EXCLUIR</Button>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>

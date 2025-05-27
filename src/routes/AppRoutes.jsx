@@ -15,15 +15,19 @@ import DashboardMedico from '../pages/dashboards/DashboardMedico';
 import DashboardAdmin from '../pages/dashboards/DashboardAdmin'; // ← Este não está na sua estrutura! Crie ou remova.
 
 // Funcionalidades
-import EditarPerfil from '../pages/funcionalidades/EditarPerfil'; // ← Este arquivo não apareceu na estrutura. Crie ou remova.
-import EditarPerfilMedico from '../pages/funcionalidades/EditarPerfilMedico'; // ← Também não apareceu.
-import AgendarConsulta from '../pages/funcionalidades/AgendarConsulta';
+import Admin from '../pages/admin/Admin';
+
+import Paciente from '../pages/paciente/Paciente'; 
+import AgendarConsulta from '../pages/paciente/AgendarConsulta';
+
+import Medico from '../pages/medico/Medico'; 
+import Consultas from '../pages/medico/Consultas'; 
+
 import Agendamento from '../pages/funcionalidades/Agendamento';
-import ConsultasMedico from '../pages/funcionalidades/ConsultasMedico'; // ← Também não apareceu.
 
 // Admin Pages
 import AdminUsuarios from '../pages/admin/AdminUsuarios';
-import AdminMedicos from '../pages/admin/AdminMedicos'; // OBS: o nome do arquivo é `AdminMedico.jsx`, não `AdminMedicos.jsx`.
+import AdminMedicos from '../pages/admin/AdminMedicos';
 import AdminConsultas from '../pages/admin/AdminConsultas';
 
 export default function AppRoutes() {
@@ -46,13 +50,16 @@ export default function AppRoutes() {
         <Route path="/admin" element={<DashboardAdmin />} />
 
         {/* Funcionalidades */}
-        <Route path="/editar-perfil" element={<EditarPerfil />} />
-        <Route path="/editar-perfil-medico" element={<EditarPerfilMedico />} />
-        <Route path="/consultas-medico" element={<ConsultasMedico />} />
-        <Route path="/agendar" element={<AgendarConsulta />} />
+        <Route path="/paciente/perfil" element={<Paciente />} />
+        <Route path="/paciente/agendar" element={<AgendarConsulta />} />
+
+        <Route path="/medico/perfil" element={<Medico />} />
+        <Route path="/medico/consultas" element={<Consultas />} />
+        
         <Route path="/agendamento" element={<Agendamento />} />
 
         {/* Admin Pages */}
+        <Route path="/admin/perfil" element={<Admin />} />
         <Route path="/admin/usuarios" element={<AdminUsuarios />} />
         <Route path="/admin/medicos" element={<AdminMedicos />} />
         <Route path="/admin/consultas" element={<AdminConsultas />} />

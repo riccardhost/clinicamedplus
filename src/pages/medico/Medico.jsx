@@ -26,7 +26,7 @@ const especialidades = [
   { key: 'gineco', text: 'Ginecologia', value: 'Ginecologia' }
 ];
 
-export default function EditarPerfilMedico() {
+export default function Medico() {
   const navigate = useNavigate();
 
   // Dados simulados do médico - substitua por dados da API
@@ -85,7 +85,9 @@ export default function EditarPerfilMedico() {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              <button className="dropdown-toggle">Especialidades ▾</button>
+              
+              <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+              
               {showDropdown && (
                 <div className="dropdown-menu">
                   <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
@@ -103,7 +105,7 @@ export default function EditarPerfilMedico() {
         </div>
       </header>
 
-      <Container style={{ marginTop: '3em' }}>
+      <Container style={{ marginTop: '3em', marginBottom: '3em' }}>
         
         <Header as="h2" icon textAlign="center">
           <Icon name="user md" />
@@ -111,8 +113,12 @@ export default function EditarPerfilMedico() {
           <Header.Subheader>Atualize seus dados de perfil</Header.Subheader>
         </Header>
 
-        <Segment padded>
+        <br />
+
+        <Segment padded='very' style={{ maxWidth: '500px', margin: '0 auto' }}>
+
           <Form onSubmit={handleSubmit}>
+            
             <Form.Input
               label="Nome"
               name="nome"
@@ -120,6 +126,7 @@ export default function EditarPerfilMedico() {
               onChange={handleChange}
               required
             />
+
             <Form.Input
               label="Email"
               type="email"
@@ -128,6 +135,7 @@ export default function EditarPerfilMedico() {
               onChange={handleChange}
               required
             />
+
             <Form.Field required>
               <label>Especialidade</label>
               <Dropdown
@@ -140,6 +148,7 @@ export default function EditarPerfilMedico() {
                 onChange={handleChange}
               />
             </Form.Field>
+
             <Form.Input
               label="Telefone"
               name="telefone"
@@ -148,9 +157,8 @@ export default function EditarPerfilMedico() {
               required
             />
 
-            <Button type="submit" primary fluid>
-              Salvar Alterações
-            </Button>
+            <Button type="submit" primary fluid>SALVAR</Button>
+
           </Form>
 
           {salvo && (
@@ -161,11 +169,10 @@ export default function EditarPerfilMedico() {
               style={{ marginTop: '1em' }}
             />
           )}
-        </Segment>
-      </Container>
 
-      <br />
-      <br />
+        </Segment>
+
+      </Container>
 
       <footer className="footer">
         <div className="footer-container">

@@ -10,18 +10,22 @@ import { FaFacebook, FaInstagram, FaPhoneAlt, FaEnvelope } from 'react-icons/fa'
 
 import logoImg from '../../assets/images/logo/ClinicaMED002.png';
 
-
 export default function DashboardPaciente() {
+
+// Dados simulados – depois você pode puxar da API
+  const paciente = {
+    nome: 'Ricardo Silva',
+  };
 
   const [openConfirm, setOpenConfirm] = useState(false);
   const navigate = useNavigate();
 
   const handleEditar = () => {
-    navigate('/editar-perfil'); // Exemplo de rota
+    navigate('/paciente/perfil'); // Exemplo de rota
   };
 
   const handleAgendar = () => {
-    navigate('/agendar'); // Exemplo de rota
+    navigate('/paciente/agendar'); // Exemplo de rota
   };
 
   const handleExcluirConta = () => {
@@ -31,7 +35,6 @@ export default function DashboardPaciente() {
     // Redirecionar após exclusão se necessário
     navigate('/');
   };
-
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -46,7 +49,7 @@ export default function DashboardPaciente() {
 
     <div className="home-container">
 
-     <header className="header_geral">
+      <header className="header_geral">
 
         <div className="navbar">
 
@@ -68,7 +71,9 @@ export default function DashboardPaciente() {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              <button className="dropdown-toggle">Especialidades ▾</button>
+              
+              <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+
               {showDropdown && (
                 <div className="dropdown-menu">
                   <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
@@ -86,68 +91,61 @@ export default function DashboardPaciente() {
         </div>
       </header>
 
-          <Container style={{ marginTop: '3em', marginBottom: '3em' }}>
+      <Container style={{ marginTop: '3em', marginBottom: '3em' }}>
 
-            <Segment padded raised color="blue">
+        <Header as="h2" textAlign="center" style={{ marginBottom: '1em', padding: '1em' }}>
 
-                <Header as="h2" textAlign="center" style={{ marginBottom: '1em', padding: '1em'}}>
+          <Icon name="user circle" />
 
-                  <Icon name="user circle" />
+          <Header.Content>Bem-vindo(a), {paciente.nome}</Header.Content>
 
-                  <Header.Content>Bem-vindo(a), Paciente</Header.Content>
+        </Header>
 
-                </Header>
+        <Divider />
 
-                <Divider />
+        <Segment padded raised color="red">
 
-                  <Grid columns={3} stackable textAlign="center">
+          <Grid columns={1} stackable textAlign="right">
 
-                    <Grid.Row>
-                      
-                      <Grid.Column>
-                        <Button icon labelPosition="left" color="teal" onClick={handleEditar}>
-                          <Icon name="edit" />
-                          Editar Perfil
-                        </Button>
+            <Grid.Row>
 
-                      </Grid.Column>
+              <Grid.Column>
+                <Button icon labelPosition="left" color="teal" onClick={handleEditar}>
+                  <Icon name="edit" />
+                  MEU PERFIL
+                </Button>
+            
+                <Button icon labelPosition="left" color="green" onClick={handleAgendar}>
+                  <Icon name="calendar plus" />
+                  AGENDAR CONSULTA
+                </Button>
+            
+                <Button icon labelPosition="left" color="red" onClick={() => setOpenConfirm(true)}>
+                  <Icon name="trash" />
+                  EXCLUIR
+                </Button>
 
-                      <Grid.Column>
-                        <Button icon labelPosition="left" color="green" onClick={handleAgendar}>
-                          <Icon name="calendar plus" />
-                          Agendar Consulta
-                        </Button>
-                      </Grid.Column>
+              </Grid.Column>
 
-                      <Grid.Column>
-                        <Button icon labelPosition="left" color="red" onClick={() => setOpenConfirm(true)}>
-                          <Icon name="trash" />
-                          Excluir Conta
-                        </Button>
+            </Grid.Row>
 
-                      </Grid.Column>
+          </Grid>
 
-                    </Grid.Row>
+          <Confirm
+            open={openConfirm}
+            header="Confirmar exclusão"
+            content="Tem certeza que deseja excluir sua conta? Essa ação não poderá ser desfeita."
+            onCancel={() => setOpenConfirm(false)}
+            onConfirm={handleExcluirConta}
+            confirmButton="Sim, excluir"
+            cancelButton="Cancelar"
+          />
 
-                  </Grid>
+        </Segment>
 
-            <Divider />
+      </Container>
 
-            <Confirm
-              open={openConfirm}
-              header="Confirmar exclusão"
-              content="Tem certeza que deseja excluir sua conta? Essa ação não poderá ser desfeita."
-              onCancel={() => setOpenConfirm(false)}
-              onConfirm={handleExcluirConta}
-              confirmButton="Sim, excluir"
-              cancelButton="Cancelar"
-            />
-
-            </Segment>
-
-          </Container>
-
-     <footer className="footer">
+      <footer className="footer">
         <div className="footer-container">
           <div className="footer-section">
             <h4>Contato</h4>

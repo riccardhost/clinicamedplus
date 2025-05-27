@@ -9,7 +9,9 @@ import {
   Header,
   Dropdown,
   Message,
-  Icon
+  Icon,
+  Container,
+  Segment
 } from 'semantic-ui-react';
 
 import { useState } from 'react';
@@ -80,7 +82,9 @@ const [menuOpen, setMenuOpen] = useState(false);
                 onMouseEnter={() => setShowDropdown(true)}
                 onMouseLeave={() => setShowDropdown(false)}
               >
-                <button className="dropdown-toggle">Especialidades ▾</button>
+
+                <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+                
                 {showDropdown && (
                   <div className="dropdown-menu">
                     <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
@@ -98,21 +102,18 @@ const [menuOpen, setMenuOpen] = useState(false);
           </div>
         </header>
 
-        <section className="form-section">
-
-          <div className="form-card">
-
+        <Container style={{ marginTop: '3em', marginBottom: '3em' }}>
+        
           <Header as="h2" icon textAlign="center">
-
-          <Icon name="calendar plus" />
-          
-          Agendar Consulta
-
+            <Icon name="calendar plus" />
+            Agendar Consulta
           <Header.Subheader>Escolha a especialidade, data e horário desejados.</Header.Subheader>
-    
-          <br />
-
+  
           </Header>
+
+        <br />
+
+        <Segment padded='very' style={{ maxWidth: '500px', margin: '0 auto' }}>
 
           <Form onSubmit={handleSubmit}>
 
@@ -149,15 +150,17 @@ const [menuOpen, setMenuOpen] = useState(false);
           />
 
           <Button type="submit" primary fluid aria-label="Confirmar agendamento">
-              Confirmar Agendamento
+              CONFIRMAR
           </Button>
           </Form>
 
           {agendado && (
-          <Message success header="Sucesso!" content="Consulta agendada com sucesso." />
+          <Message success header="Sucesso!" content="Consulta agendada com sucesso!" />
           )}
-      </div>
-    </section>
+
+    </Segment>
+
+</Container>
 
     <br />
     <br />

@@ -51,7 +51,9 @@ export default function Home() {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              <button className="dropdown-toggle">Especialidades ▾</button>
+              
+              <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+
               {showDropdown && (
                 <div className="dropdown-menu">
                   <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
@@ -89,31 +91,40 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="especialidades modern-especialidades">
-        <h2>Especialidades disponíveis</h2>
-        <div className="cards-grid">
-          <div className="card">
-            <img src={cardioImg} alt="Cardiologia" />
-            <p>Cardiologia</p>
+      <section className="especialidades">
+
+          <h2>Conheça nossas especialidades</h2>
+          <p>Profissionais qualificados para atender você com excelência.</p>
+
+          <div className="cards">
+            <div className="card">
+              <img src={cardioImg} alt="Cardiologia" />
+              <h4>Cardiologia</h4>
+              <p>Diagnóstico e tratamento de doenças do coração e sistema circulatório.</p>
+            </div>
+            <div className="card">
+              <img src={clinicoImg} alt="Clínico Geral" />
+              <h4>Clínico Geral</h4>
+              <p>Atendimento inicial e acompanhamento de problemas de saúde comuns.</p>
+            </div>
+            <div className="card">
+              <img src={pediaImg} alt="Pediatria" />
+              <h4>Pediatria</h4>
+              <p>Cuidados médicos para crianças e adolescentes desde o nascimento até os 18 anos.</p>
+            </div>
+            <div className="card">
+              <img src={dermoImg} alt="Dermatologia" />
+              <h4>Dermatologia</h4>
+              <p>Tratamento de doenças da pele, cabelos, unhas e mucosas.</p>
+            </div>
+            <div className="card">
+              <img src={ginecoImg} alt="Ginecologia" />
+              <h4>Ginecologia</h4>
+              <p>Saúde da mulher com foco no sistema reprodutor e prevenção de doenças.</p>
+            </div>
           </div>
-          <div className="card">
-            <img src={clinicoImg} alt="Clínico Geral" />
-            <p>Clínico Geral</p>
-          </div>
-          <div className="card">
-            <img src={pediaImg} alt="Pediatria" />
-            <p>Pediatria</p>
-          </div>
-          <div className="card">
-            <img src={dermoImg} alt="Dermatologia" />
-            <p>Dermatologia</p>
-          </div>
-          <div className="card">
-            <img src={ginecoImg} alt="Ginecologia" />
-            <p>Ginecologia</p>
-          </div>
-        </div>
-      </section>
+
+        </section>
 
       <footer className="footer">
         <div className="footer-container">

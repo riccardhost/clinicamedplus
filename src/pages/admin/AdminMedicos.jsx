@@ -45,7 +45,9 @@ export default function AdminMedicos() {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              <button className="dropdown-toggle">Especialidades ▾</button>
+              
+              <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+              
               {showDropdown && (
                 <div className="dropdown-menu">
                   <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
@@ -65,9 +67,12 @@ export default function AdminMedicos() {
 
       {/* Página de Médicos */}
       <Container style={{ marginTop: '3em', marginBottom: '3em' }}>
+        
         <Header as="h2" textAlign="center">
           Gerenciar Médicos
         </Header>
+        
+        <br />
 
         <Segment padded>
           <Table celled>
@@ -87,8 +92,8 @@ export default function AdminMedicos() {
                 <Table.Cell>Cardiologia</Table.Cell>
                 <Table.Cell>joao.medico@example.com</Table.Cell>
                 <Table.Cell>
-                  <Button color="yellow">Editar</Button>
-                  <Button color="red">Excluir</Button>
+                  <Button color="yellow">EDITAR</Button>
+                  <Button color="red">EXCLUIR</Button>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>

@@ -1,25 +1,31 @@
 
 
 import '../styles/Home.css';
+import '../styles/Especialidades.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
-import logoImg from '../assets/images/logo/ClinicaMED002.png';
 import { FaFacebook, FaInstagram, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
+import cardioImg from '../assets/images/cards/cardiologista.png';
+import clinicoImg from '../assets/images/cards/ClinicoGeral.jpg';
+import pediaImg from '../assets/images/cards/Pediatria.jpeg';
+import dermoImg from '../assets/images/cards/Dermatologia.jpg';
+import ginecoImg from '../assets/images/cards/Ginecologia.jpg';
+import logoImg from '../assets/images/logo/ClinicaMED002.png';
+
 export default function Especialidades() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
- const [menuOpen, setMenuOpen] = useState(false);
-    const [showDropdown, setShowDropdown] = useState(false);
-
-    const toggleMenu = () => setMenuOpen(!menuOpen);
-    const closeMenu = () => {
-      setMenuOpen(false);
-      setShowDropdown(false);
-    };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setShowDropdown(false);
+  };
 
   return (
-    
+
     <div className="home-container">
 
       <header className="header_geral">
@@ -44,7 +50,9 @@ export default function Especialidades() {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              <button className="dropdown-toggle">Especialidades ▾</button>
+
+              <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+              
               {showDropdown && (
                 <div className="dropdown-menu">
                   <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
@@ -62,38 +70,40 @@ export default function Especialidades() {
         </div>
       </header>
 
-      <section className="especialidades">
-        <h2>Conheça nossas especialidades</h2>
-        <p>Profissionais qualificados para atender você com excelência.</p>
+        <section className="especialidades">
 
-        <div className="cards">
-          <div className="card">
-            <img src="https://cdn.pixabay.com/photo/2018/04/18/18/56/heart-3330668_1280.png" alt="Cardiologia" />
-            <h4>Cardiologia</h4>
-            <p>Diagnóstico e tratamento de doenças do coração e sistema circulatório.</p>
+          <h2>Conheça nossas especialidades</h2>
+          <p>Profissionais qualificados para atender você com excelência.</p>
+
+          <div className="cards">
+            <div className="card">
+              <img src={cardioImg} alt="Cardiologia" />
+              <h4>Cardiologia</h4>
+              <p>Diagnóstico e tratamento de doenças do coração e sistema circulatório.</p>
+            </div>
+            <div className="card">
+              <img src={clinicoImg} alt="Clínico Geral" />
+              <h4>Clínico Geral</h4>
+              <p>Atendimento inicial e acompanhamento de problemas de saúde comuns.</p>
+            </div>
+            <div className="card">
+              <img src={pediaImg} alt="Pediatria" />
+              <h4>Pediatria</h4>
+              <p>Cuidados médicos para crianças e adolescentes desde o nascimento até os 18 anos.</p>
+            </div>
+            <div className="card">
+              <img src={dermoImg} alt="Dermatologia" />
+              <h4>Dermatologia</h4>
+              <p>Tratamento de doenças da pele, cabelos, unhas e mucosas.</p>
+            </div>
+            <div className="card">
+              <img src={ginecoImg} alt="Ginecologia" />
+              <h4>Ginecologia</h4>
+              <p>Saúde da mulher com foco no sistema reprodutor e prevenção de doenças.</p>
+            </div>
           </div>
-          <div className="card">
-            <img src="https://cdn.pixabay.com/photo/2016/03/31/19/56/stethoscope-1294824_1280.png" alt="Clínico Geral" />
-            <h4>Clínico Geral</h4>
-            <p>Atendimento inicial e acompanhamento de problemas de saúde comuns.</p>
-          </div>
-          <div className="card">
-            <img src="https://cdn.pixabay.com/photo/2016/03/31/20/11/doctor-1294832_1280.png" alt="Pediatria" />
-            <h4>Pediatria</h4>
-            <p>Cuidados médicos para crianças e adolescentes desde o nascimento até os 18 anos.</p>
-          </div>
-          <div className="card">
-            <img src="https://cdn.pixabay.com/photo/2014/04/03/11/51/face-312988_1280.png" alt="Dermatologia" />
-            <h4>Dermatologia</h4>
-            <p>Tratamento de doenças da pele, cabelos, unhas e mucosas.</p>
-          </div>
-          <div className="card">
-            <img src="https://cdn.pixabay.com/photo/2017/03/25/17/55/woman-2178826_1280.png" alt="Ginecologia" />
-            <h4>Ginecologia</h4>
-            <p>Saúde da mulher com foco no sistema reprodutor e prevenção de doenças.</p>
-          </div>
-        </div>
-      </section>
+
+        </section>
 
       <footer className="footer">
         <div className="footer-container">
@@ -129,4 +139,3 @@ export default function Especialidades() {
     </div>
   );
 }
-

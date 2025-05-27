@@ -15,27 +15,27 @@ export default function DashboardAdmin() {
   const handleGerenciarUsuarios = () => navigate('/admin/usuarios');
   const handleGerenciarMedicos = () => navigate('/admin/medicos');
   const handleGerenciarConsultas = () => navigate('/admin/consultas');
+  const handleEditarPerfil = () => navigate('/admin/perfil'); // NOVO
   const handleLogout = () => {
     // Exemplo: localStorage.removeItem('token');
     navigate('/login');
   };
 
   const [menuOpen, setMenuOpen] = useState(false);
-        const [showDropdown, setShowDropdown] = useState(false);
-    
-        const toggleMenu = () => setMenuOpen(!menuOpen);
-        const closeMenu = () => {
-          setMenuOpen(false);
-          setShowDropdown(false);
-    };
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setShowDropdown(false);
+  };
 
   return (
-
     <div className="home-container">
 
-        <header className="header_geral">
-          
-          <div className="navbar">
+      <header className="header_geral">
+
+        <div className="navbar">
 
           <div className="logo-container">
             <Link to="/">
@@ -55,7 +55,9 @@ export default function DashboardAdmin() {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              <button className="dropdown-toggle">Especialidades ▾</button>
+              
+              <Link to="/especialidades" className="dropdown-toggle" onClick={closeMenu}>Especialidades ▾</Link>
+              
               {showDropdown && (
                 <div className="dropdown-menu">
                   <Link to="/especialidades/cardiologia" onClick={closeMenu}>Cardiologia</Link>
@@ -71,89 +73,99 @@ export default function DashboardAdmin() {
             <Link to="/cadastro" className="btn-cadastro" onClick={closeMenu}>Cadastro</Link>
           </nav>
         </div>
-        </header>
+      </header>
 
-        {/* Conteúdo Principal */}
-        <Container style={{ marginTop: '3em', marginBottom: '3em' }}>
+      {/* Conteúdo Principal */}
+      <Container style={{ marginTop: '3em', marginBottom: '3em' }}>
 
-            <Header as="h2" textAlign="center" style={{ marginBottom: '1em', padding: '1em'}}>
+        <Header as="h2" textAlign="center" style={{ marginBottom: '1em', padding: '1em' }}>
+          <Icon name="user shield" />
+          <Header.Content>Bem-vindo(a), Administrador(a)</Header.Content>
+        </Header>
 
-              <Icon name="user shield"/>
-              
-              <Header.Content>Bem-vindo(a), Administrador(a)</Header.Content>
-              
-            </Header>
+        <Divider />
 
-            <Divider />
+        <Segment padded raised color="blue">
+          
+          <Grid columns={5} stackable textAlign="center" padded="vertically">
 
-            <Segment padded raised color="red">
+            <Grid.Row>
 
-              <Grid columns={4} stackable textAlign="center" padded="vertically">
+              <Grid.Column>
+                <Button
+                  icon
+                  labelPosition="left"
+                  color="violet"
+                  fluid
+                  size="large"
+                  onClick={handleGerenciarUsuarios}
+                >
+                  <Icon name="users" />
+                  PACIENTES
+                </Button>
+              </Grid.Column>
 
-                <Grid.Row>
+              <Grid.Column>
+                <Button
+                  icon
+                  labelPosition="left"
+                  color="blue"
+                  fluid
+                  size="large"
+                  onClick={handleGerenciarMedicos}
+                >
+                  <Icon name="stethoscope" />
+                  MÉDICOS
+                </Button>
+              </Grid.Column>
 
-                  <Grid.Column>
-                    <Button
-                      icon
-                      labelPosition="left"
-                      color="violet"
-                      fluid
-                      size="large"
-                      onClick={handleGerenciarUsuarios}
-                    >
-                      <Icon name="users" />
-                      Gerenciar Usuários
-                    </Button>
-                    
-                  </Grid.Column>
+              <Grid.Column>
+                <Button
+                  icon
+                  labelPosition="left"
+                  color="green"
+                  fluid
+                  size="large"
+                  onClick={handleGerenciarConsultas}
+                >
+                  <Icon name="calendar check" />
+                  CONSULTAS
+                </Button>
+              </Grid.Column>
 
-                  <Grid.Column>
-                    <Button
-                      icon
-                      labelPosition="left"
-                      color="blue"
-                      fluid
-                      size="large"
-                      onClick={handleGerenciarMedicos}
-                    >
-                      <Icon name="stethoscope" />
-                      Gerenciar Médicos
-                    </Button>
-                  </Grid.Column>
-              
-                  <Grid.Column>
-                    <Button
-                      icon
-                      labelPosition="left"
-                      color="green"
-                      fluid
-                      size="large"
-                      onClick={handleGerenciarConsultas}
-                    >
-                      <Icon name="calendar check" />
-                      Consultas Agendadas
-                    </Button>
-                  </Grid.Column>
+              <Grid.Column>
+                <Button
+                  icon
+                  labelPosition="left"
+                  color="teal"
+                  fluid
+                  size="large"
+                  onClick={handleEditarPerfil}
+                >
+                  <Icon name="edit" />
+                  MEU PERFIL
+                </Button>
+              </Grid.Column>
 
-                  <Grid.Column>
-                    <Button
-                      icon
-                      labelPosition="left"
-                      color="red"
-                      fluid
-                      size="large"
-                      onClick={handleLogout}
-                    >
-                      <Icon name="sign-out" />
-                      Sair do Sistema
-                    </Button>
-                  </Grid.Column>
+              <Grid.Column>
+                <Button
+                  icon
+                  labelPosition="left"
+                  color="red"
+                  fluid
+                  size="large"
+                  onClick={handleLogout}
+                >
+                  <Icon name="sign-out" />
+                  SAIR
+                </Button>
+              </Grid.Column>
 
-                </Grid.Row>
-                
-              </Grid>
-          </Segment>
-        </Container>
+            </Grid.Row>
+
+          </Grid>
+        </Segment>
+      </Container>
 
       {/* Rodapé */}
       <footer className="footer">
